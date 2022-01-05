@@ -1,4 +1,4 @@
-import { get_base_uri } from './utils';
+import { resolve_path } from './utils';
 
 function scroll_state() {
 	return {
@@ -214,7 +214,7 @@ export class Router {
 		{ noscroll = false, replaceState = false, keepfocus = false, state = {} } = {},
 		chain
 	) {
-		const url = new URL(href, get_base_uri(document));
+		const url = resolve_path(href);
 
 		if (this.enabled && this.owns(url)) {
 			history[replaceState ? 'replaceState' : 'pushState'](state, '', href);

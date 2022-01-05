@@ -9,3 +9,18 @@ export function get_base_uri(doc) {
 
 	return baseURI;
 }
+
+/**
+ * @param {string} href
+ */
+export function resolve_path(href) {
+	const anchor = document.createElement('a');
+
+	anchor.href = href;
+
+	const resolved = new URL(anchor.href);
+
+	resolved.pathname.replace(/\/$/, '');
+
+	return resolved;
+}
